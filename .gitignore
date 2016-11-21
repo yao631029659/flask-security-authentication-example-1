@@ -1,0 +1,5 @@
+static/bower_components
+static/components
+node_modules/
+*.pyc
+*.db
