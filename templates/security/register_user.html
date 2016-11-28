@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flask-Security Autenticação usuário</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+{% from "security/_macros.html" import render_field_with_errors, render_field %}
+{% include "security/_messages.html" %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    Register
+                </div>
+                <div class="panel-body">
+                    <form action="{{ url_for_security('register') }}" method="POST" name="register_user_form">
+                        {{ register_user_form.hidden_tag() }}
+                        <div class="form-group">                            
+                             {{ render_field_with_errors(register_user_form.name , class='form-control') }}                            
+                        </div>
+                        <div class="form-group"> 
+                            {{ render_field_with_errors(register_user_form.email, class='form-control') }}
+                        </div>
+                        <div class="form-group"> 
+                             {{ render_field_with_errors(register_user_form.password, class='form-control') }}
+                        </div>
+                         <div class="form-group"> 
+                              {% if register_user_form.password_confirm %}
+                                   {{ render_field_with_errors(register_user_form.password_confirm, class='form-control') }}
+                              {% endif %}
+                        </div>
+                         <div class="form-group"> 
+                             {{ render_field_with_errors(register_user_form.password, class='form-control') }}
+                        </div>
+                         <div class="form-group"> 
+                              {{ render_field(register_user_form.submit, class='btn btn-primary') }}
+                        </div>
+                    </form>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

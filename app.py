@@ -2,6 +2,7 @@ from flask import Flask
 from database import db
 from models import User, Role
 from flask_security import Security, SQLAlchemyUserDatastore
+from  security_forms import ExtendedRegisterForm
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -21,7 +22,7 @@ db.init_app(app)
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 
 # Finalmente inicializa o package security passando contexto de aplicacao e instancia de "banco" 
-security = Security(app, user_datastore)
+security = Security(app, user_datastore, register_form=ExtendedRegisterForm)
 
 if __name__ == "__main__":
     with app.app_context():
