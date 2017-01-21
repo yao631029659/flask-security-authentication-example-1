@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255))
     active = db.Column(db.Boolean())
+    # 这个name不是必须字段，因为我们在form里面新增了一个字段 所以这里要多加一个字段来记录
     name = db.Column(db.String(255))
     confirmed_at = db.Column(db.DateTime())
     roles = db.relationship('Role', secondary=roles_users,

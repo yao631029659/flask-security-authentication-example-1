@@ -21,11 +21,12 @@ db.init_app(app)
 # A classe SQLAlchemyUserDatastore implementa os metodos necessarios para CRUD de usuarios e permissoes
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 
-# Finalmente inicializa o package security passando contexto de aplicacao e instancia de "banco" 
+# Finalmente inicializa o package security passando contexto de aplicacao e instancia de "banco"
+# 传输三个参数给security 第一个是app 第二个是user_datatstore 第三个是蓝图控制器（这个是可选参数，只有你要自定义注册的表单的时候才添加）
 security = Security(app, user_datastore, register_form=ExtendedRegisterForm)
 
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
 
-    app.run(host="0.0.0.0", debug=True, port=8080)
+    app.run()
