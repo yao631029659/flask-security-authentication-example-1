@@ -1,8 +1,9 @@
-from flask import Flask
+from flask import Flask,redirect
 from database import db
 from models import User, Role
 from flask_security import Security, SQLAlchemyUserDatastore
 from  security_forms import ExtendedRegisterForm
+from flask_security.utils import url_for_security
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -24,6 +25,10 @@ user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 # Finalmente inicializa o package security passando contexto de aplicacao e instancia de "banco"
 # 传输三个参数给security 第一个是app 第二个是user_datatstore 第三个是蓝图控制器（这个是可选参数，只有你要自定义注册的表单的时候才添加）
 security = Security(app, user_datastore, register_form=ExtendedRegisterForm)
+
+@app.route('/')
+def home():
+    return redirect(url_for_security('register'))
 
 if __name__ == "__main__":
     with app.app_context():

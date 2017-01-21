@@ -1,7 +1,5 @@
 
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.security import Security, SQLAlchemyUserDatastore, \
-    UserMixin, RoleMixin, login_required
+from flask_security import UserMixin, RoleMixin
 
 from database import db
 
