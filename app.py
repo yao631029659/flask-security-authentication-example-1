@@ -13,7 +13,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
 # Configuracao para nao enviar email no registro de novos usuarios
 app.config['SECURITY_SEND_REGISTER_EMAIL'] = False
 
-# Necessario para habilitar o registro de novos usuarios
+# 有了这句你才可以自定义模板文件 要不然不成功的
 app.config['SECURITY_REGISTERABLE'] = True
 
 # Inicializa a instancia do banco dentro do contexto da aplicacao
