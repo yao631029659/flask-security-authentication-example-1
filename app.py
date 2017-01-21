@@ -10,7 +10,8 @@ app.config['DEBUG'] = True
 app.config['SECRET_KEY'] = 'super-secret'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
 
-# Configuracao para nao enviar email no registro de novos usuarios
+
+# 不发送注册信息到邮箱
 app.config['SECURITY_SEND_REGISTER_EMAIL'] = False
 
 # 有了这句你才可以自定义模板文件 要不然不成功的
