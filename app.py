@@ -17,14 +17,14 @@ app.config['SECURITY_SEND_REGISTER_EMAIL'] = False
 # 有了这句你才可以自定义模板文件 要不然不成功的
 app.config['SECURITY_REGISTERABLE'] = True
 
-# Inicializa a instancia do banco dentro do contexto da aplicacao
+#注册db
 db.init_app(app)
 
-# A classe SQLAlchemyUserDatastore implementa os metodos necessarios para CRUD de usuarios e permissoes
+# 这个对象有好多功能可以用的
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 
 # Finalmente inicializa o package security passando contexto de aplicacao e instancia de "banco"
-# 传输三个参数给security 第一个是app 第二个是user_datatstore 第三个是蓝图控制器（这个是可选参数，只有你要自定义注册的表单的时候才添加）
+# 传输三个参数给security 第一个是app 第二个是user_datatstore 第三个是自定义的表单
 security = Security(app, user_datastore, register_form=ExtendedRegisterForm)
 
 @app.route('/')
